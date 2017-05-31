@@ -1,0 +1,25 @@
+<head>
+  <title>bug-publish-composite</title>
+</head>
+
+<body>
+  {{> hello}} 
+</body>
+
+<template name="child">
+  <div>
+  <button>Click Me</button> 
+  child {{child.name}}
+  </div>
+</template>
+
+<template name="hello">
+  {{#each parent in getParents}}
+  <h3>
+    parent {{parent.name}}
+  </h3>
+  {{#each childId in parent.childs}} 
+  {{> child child=(getChild childId)}} 
+  {{/each}} 
+  {{/each}}
+</template>
